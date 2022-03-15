@@ -4,7 +4,7 @@ import java.util.*;
 
 public class ParsingService {
     private LinkedList<String> tmpStackForSigns = new LinkedList<>();
-    private List<String> parsedExpression = new LinkedList<>();
+    private LinkedList<String> parsedExpression = new LinkedList<>();
     private HashMap<String, Integer> signAndPriority = new HashMap<>();
 
 
@@ -15,11 +15,11 @@ public class ParsingService {
         signAndPriority.put("/", 2);
     }
 
-    public List<String> getParsedExpression(String expression) {
+    public LinkedList<String> getParsedExpression(String expression) {
         String[] arrayExpression = expression.split("(?<=[\\d.])(?=[^\\d.])|(?<=[^\\d.])(?=[\\d.])");
         for (String signOrOperator: arrayExpression) {
             try {
-                Integer integer = Integer.parseInt(signOrOperator);
+                Double integer = Double.parseDouble(signOrOperator);
                 parsedExpression.add(signOrOperator);
             } catch (NumberFormatException ex) {
                 compareOfPriorities(signOrOperator);
@@ -29,19 +29,17 @@ public class ParsingService {
             parsedExpression.add(tmpStackForSigns.peekLast());
             tmpStackForSigns.removeLast();
         }
-        System.out.println(parsedExpression);
-        System.out.println(tmpStackForSigns);
         return parsedExpression;
     }
 
-    public void compareOfPriorities(String currentSign) {
+    private void compareOfPriorities(String currentSign) {
         if (tmpStackForSigns.peekLast() != null) {
-            System.out.println(signAndPriority.get(currentSign));
-            System.out.println(signAndPriority.get(tmpStackForSigns.peekLast()));
             if (signAndPriority.get(currentSign) <= signAndPriority.get(tmpStackForSigns.peekLast())) {
                 parsedExpression.add(tmpStackForSigns.peekLast());
                 tmpStackForSigns.removeLast();
                 compareOfPriorities(currentSign);
+            } else {
+                tmpStackForSigns.add(currentSign);
             }
         } else {
             tmpStackForSigns.add(currentSign);
