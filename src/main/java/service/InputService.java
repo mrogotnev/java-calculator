@@ -8,13 +8,15 @@ import java.util.regex.Pattern;
 
 public class InputService {
 
-    public String inputExpression() throws WrongSyntaxException {
+    public String inputExpression(String expression) throws WrongSyntaxException {
         ValidationService validationService = new ValidationService();
-        Scanner scanner = new Scanner(System.in);
-        String expression = scanner.nextLine();
         expression = expression.replaceAll("\\s|\\t", "");
         validationService.inputValidation(expression);
         return expression;
     }
 
+    public String consoleInput() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
 }
