@@ -5,7 +5,7 @@ import service.MathOperationsService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MathOperationsServiceTests {
+public class MathOperationsServiceTest {
 
     private static final double firstOperand = 10.2;
     private static final double secondOperand = 5;
