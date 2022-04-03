@@ -2,8 +2,6 @@ import exceptions.WrongSyntaxException;
 import org.junit.Test;
 import service.ValidationService;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class ValidationServiceTest {
     private static final ValidationService validationService = new ValidationService();
 
