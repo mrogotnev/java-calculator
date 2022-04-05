@@ -1,27 +1,37 @@
 import exceptions.WrongSyntaxException;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import service.ValidationService;
 
 public class ValidationServiceTest {
     private static final ValidationService validationService = new ValidationService();
 
-    @Test(expected = WrongSyntaxException.class)
+    @Test
     public void inputValidationRepeatSigns() throws WrongSyntaxException {
-        validationService.inputValidation("5++2");
+        Assertions.assertThrows(WrongSyntaxException.class, () -> {
+            validationService.inputValidation("5++2");
+        });
     }
 
-    @Test(expected = WrongSyntaxException.class)
+    @Test
     public void inputValidationLettersInExpression() throws WrongSyntaxException {
-        validationService.inputValidation("5 + 2 asd");
+        Assertions.assertThrows(WrongSyntaxException.class, () -> {
+            validationService.inputValidation("5 + 2 asd");
+        });
+
     }
 
-    @Test(expected = WrongSyntaxException.class)
+    @Test
     public void inputValidationSignInStartOfExpression() throws WrongSyntaxException {
-        validationService.inputValidation("+5 2");
+        Assertions.assertThrows(WrongSyntaxException.class, () -> {
+            validationService.inputValidation("+5 2");
+        });
     }
 
-    @Test(expected = ArithmeticException.class)
+    @Test
     public void inputValidationTryZeroDiv() throws WrongSyntaxException {
-        validationService.inputValidation("5/0");
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            validationService.inputValidation("5/0");
+        });
     }
 }

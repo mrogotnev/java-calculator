@@ -1,5 +1,5 @@
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import service.ParsingService;
 
 import java.util.Arrays;
@@ -10,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ParsingServiceTest {
     private static final ParsingService parsingService = new ParsingService();
     private static final String incomeData = "1+2-3*4/5";
-    private LinkedList<String> expectedExpression;
+    private static LinkedList<String> expectedExpression;
 
-    @Before
-    public void init() {
+    @BeforeAll
+    public static void init() {
         expectedExpression = new LinkedList<>(Arrays.asList("1", "2", "+", "3", "4", "*", "5", "/", "-"));
     }
 

@@ -14,7 +14,8 @@ public class main {
         ParsingService parsingService = new ParsingService();
 
         MathOperationsService mathOperationsService = new MathOperationsService();
-        //outputService.result(mathOperationsService.calculate(parsingService.getParsedExpression(inputService.inputExpression(inputService.consoleInput()))));
+        outputService.result(mathOperationsService.calculate(parsingService.getParsedExpression(inputService.inputExpression(inputService.consoleInput()))));
         System.out.println(parsingService.getParsedExpression(inputService.inputExpression(inputService.consoleInput())));
+
     }
 }

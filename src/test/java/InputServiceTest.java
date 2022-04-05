@@ -1,5 +1,5 @@
 import exceptions.WrongSyntaxException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import service.InputService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
